@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Inluirme_Proyecto.Models.Encuestas>
+@{
+    ViewBag.Title = "VerPuestos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .tituloCard{
+        background-color: darkcyan;
+        color:white;
+        font-size:2em;
+        text-align:center;
+    }
+
+    .pieCard{
+        background-color: darkcyan;
+        color:white;
+    }
+
+    .tituloEncuesta{
+        font-family:'Cambria Math';
+        font-size: 20px;
+    }
+
+
+</style>
+
+@if (!string.IsNullOrEmpty(ViewBag.mensaje)) { 
+<div class="alert alert-warning">@ViewBag.mensaje</div>
+}
+
+<h2>VerPuestos</h2>
+<hr />
+
+@foreach(var item in Model)
+            {
+
+<div class="card" style="border:1px solid black" >
+    <div class="card-header tituloCard">
+        Empresa:@item.Empresas.nombre
+    </div>
+    <div class="card-body">
+        <h5 class="card-title tituloEncuesta"><b>Busca: </b> @item.nombre</h5>
+        <p class="card-text">
+            <b>Descripcion del puesto: </b> @item.descripcion
+        </p>
+        <h5> <b>Fecha de publicación:</b>  @Html.ValueFor(modelItem => item.fecha, "{0:dd/MM/yyyy}")</h5>
+
+        <a href="@Url.Action("PostularmeBusqueda","Inicio",new { id = item.id })" class="btn btn-primary postularme">Postularme</a>
+
+    </div>
+    <br />
+    <div class="card-footer pieCard">
+        Datos de la empresa:
+        <small>
+            Provincia: @item.Empresas.provincia,
+            Ciudad:     @item.Empresas.ciudad,
+            Domicilio:     @item.Empresas.domicilio,
+            Correo electronico:     @item.Empresas.mail
+        </small>
+    </div>
+</div> <br /> 
+            }

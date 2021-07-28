@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Preguntas</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <form action="/Puestos/Preguntas" method="post" class="col-md-6 m-4">
+            <input type="hidden" name="Encuesta_id" value="@ViewBag.id" />
+            <input type="hidden" name="Empresa_id" value="@ViewBag.empresa_id" />
+            <div class="form-group">
+                <h6>Pregunta 1:</h6>
+                <input type="text" name="descripcion" value="" class="form-control" autofocus autocomplete="off" required />
+                <small style="font-size:12px;font-weight:bold;">*Solamente escriba texto, no caracteres especiales</small>
+            </div>
+            <br />
+            <div class="form-group">
+                <h6>Pregunta 2:</h6>
+                <input type="text" name="descripcion_1" value="" class="form-control" autocomplete="off" required />
+                <small style="font-size:12px;font-weight:bold;">*Solamente escriba texto, no caracteres especiales</small>
+            </div>
+            <br />
+            <div class="form-group">
+                <h6>Pregunta 3:</h6>
+                <input type="text" name="descripcion_2" value="" class="form-control" autocomplete="off" required />
+                <small style="font-size:12px;font-weight:bold;">*Solamente escriba texto, no caracteres especiales</small>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>

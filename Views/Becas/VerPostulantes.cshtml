@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Inluirme_Proyecto.Models.Preguntas>
+
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>VerPostulantes</title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <a href="@Url.Action("VerBecas","Becas",new { id = ViewBag.universidadid})" class="nav-link">Volver</a>
+        <div>
+
+            <table class="table">
+
+                <tr>
+                    <th>Datos Personales</th>
+                    <th>Encuesta</th>
+                </tr>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <h5>
+                                Apellido y nombre: @item.Usuarios.apellido, @item.Usuarios.nombre
+                            </h5>
+                            <p>
+                                Discapacidad: @item.Usuarios.Discapacidad
+                            </p>
+                            <p>
+                                Ultimos Empleo: @item.Usuarios.Empleo
+                            </p>
+                            <p>
+                                Conocimiento: @item.Usuarios.Conocimiento
+                            </p>
+                        </td>
+                        <td>
+                            <h5>1- @item.descripcion</h5>
+                            <p>@item.respuesta</p>
+                            <h5>2- @item.descripcion_1</h5>
+                            <p>@item.respuesta_1</p>
+                            <h5>3- @item.descripcion_2</h5>
+                            <p>@item.respuesta_2</p>
+                        </td>
+                    </tr>
+                }
+
+
+            </table>
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+﻿@model Inluirme_Proyecto.Models.Usuarios
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <title>Editar</title>
+</head>
+<body>
+
+    <a href="@Url.Action("Perfil", "Usuarios", new { id = Model.id })" class="nav-link">Volver al menu</a>
+    <h4>Editar mi perfil</h4>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal m-4">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.apellido, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.apellido, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.apellido, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.dni, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.dni, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.dni, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Discapacidad, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Discapacidad, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.Discapacidad, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Empleo, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Empleo, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.Empleo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Conocimiento, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Conocimiento, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.Conocimiento, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.usuario, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.usuario, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.usuario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.contra, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.contra, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.contra, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />      
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Editar perfil" class="btn btn-primary" />
+        </div>
+    </div>
+</div>
+    }
+
+</body>
+</html>

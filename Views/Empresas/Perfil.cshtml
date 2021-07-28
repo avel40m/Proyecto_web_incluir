@@ -1,0 +1,48 @@
+﻿@model Inluirme_Proyecto.Models.Empresas
+
+@{
+    ViewBag.Title = "Perfil";
+    Layout = null;
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container text-right">
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <a class="nav-link text-danger" href="/Inicio/Logout">Cerrar sesion</a>
+        }
+    }
+
+</div>
+
+<h2>DATOS PERSONALES</h2>
+<hr />
+
+<div class="card col-6">
+    <h5 class="card-header">@Model.nombre</h5>
+    <div class="card-body">
+        <p>C.U.I.T.: @Model.cuit</p>
+        <p>Provincia: @Model.provincia</p>
+        <p>Ciudad: @Model.ciudad</p>
+        <p>Domicilio: @Model.domicilio</p>
+        <p>Telefono: @Model.telefono</p>
+        <p>Correo Electronico: @Model.mail</p>
+
+        <div class="row">
+            <a href="@Url.Action("Capacitaciones","Capacitar", new { id = Model.id })" class="nav-link text-primary">Ver capacitaciones</a>
+            <a href="@Url.Action("VerPuestos","Puestos",new { id = Model.id })" class="nav-link">Ver Puesto Laboral</a>
+            <a href="@Url.Action("Editar","Empresas",new { id = Model.id })" class="nav-link text-warning">Editar perfil</a>
+            <a href="@Url.Action("Eliminar","Empresas",new { id = Model.id })" onclick="return eliminar()" class="nav-link text-danger">Eliminar perfil</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function eliminar() {
+        if (confirm("¿Desea eliminar la cuenta de la empresa de nuestra pagina?"))
+            return true
+        else
+            return false
+    }
+</script>

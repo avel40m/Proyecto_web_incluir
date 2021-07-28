@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Inluirme_Proyecto.Models.Preguntas>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VerEncuesta</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<style>
+    .label{
+        border:none;
+        font-size:2em;
+        width:80%;
+        outline:none;
+        cursor:auto;
+    }
+</style>
+
+<body>
+
+    <div>
+
+        <form action="/Inicio/VerEncuestas" method="post" class="col-md-10 m-4">
+            <input type="hidden" name="Encuesta_id" value="@ViewBag.Encuesta" />
+            <input type="hidden" name="Usuario_id" value="@ViewBag.Usuario" />
+            @foreach (var item in Model)
+            {
+
+                <div class="form-group">
+                    <input type="text" name="descripcion" class="label" value="@item.descripcion" readonly />
+                    <br />
+                    <input type="text" name="respuesta" value="" class="form-control" required autocomplete="off" autofocus />
+                    <small style="font-size: 12px; font-weight:bold">*Desarrolle su respuesta</small>
+                    <br />
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" name="descripcion_1" class="label" value="@item.descripcion_1" readonly />
+                    <br />
+                    <input type="text" name="respuesta_1" value="" class="form-control" required autocomplete="off" />
+                    <small style="font-size: 12px; font-weight:bold">*Desarrolle su respuesta</small>
+                    <br />
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="text" name="descripcion_2" class="label" value="@item.descripcion_2" readonly />
+                    <br />
+                    <input type="text" name="respuesta_2" value="" class="form-control" required autocomplete="off" />
+                    <small style="font-size: 12px; font-weight:bold">*Desarrolle su respuesta</small>
+                    <br />
+                </div>
+                <br />
+                <button class="btn btn-primary" type="submit" onclick="return validar()">Enviar Respuestas</button>
+            }
+
+        </form>
+    </div>
+
+    <script>
+        function validar() {
+            if (confirm("Verifique su respuesta antes de guardar y enviar."))
+                return true
+            else
+                return false
+        }
+    </script>
+
+</body>
+</html>

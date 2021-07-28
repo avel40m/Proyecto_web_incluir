@@ -1,0 +1,112 @@
+﻿@model Inluirme_Proyecto.Models.Empresas
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <a href="@Url.Action("Perfil","Empresas",new { id = Model.id })" class="nav-link">Volver al perfil</a>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal m-4">
+            <h4>Modificar datos de la empresas</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", autocomplete="off" } })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.cuit, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.cuit, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.cuit, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.provincia, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.provincia, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.provincia, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ciudad, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ciudad, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.ciudad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.domicilio, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.domicilio, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.domicilio, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.usuario, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.usuario, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.usuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.contra, htmlAttributes: new { @class = "control-label col-md-2 fw-bold" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.contra, new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                    @Html.ValidationMessageFor(model => model.contra, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Modificar datos" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+</body>
+</html>

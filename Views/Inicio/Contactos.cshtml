@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Contactos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ingrese su consulta</h2>
+
+<form action="/Inicio/Contactos" method="post">
+    <div class="form-group">
+        <label>Ingrese su nombre</label>
+        <input type="text" name="nombre" value="" class="form-control" required autocomplete="off"/>
+    </div>
+    <div class="form-group">
+        <label>Ingrese su Correo electronico</label>
+        <input type="email" name="correo" value="" class="form-control" required autocomplete="off"/>
+    </div>
+    <div class="form-group">
+        <label>Seleccione su consulta</label>
+        <select class="form-control" name="consulta"  aria-label="Default select example" required>
+            <option selected>--Consulta--</option>
+            <option value="ingresar">No puedo ingresar</option>
+            <option value="sugerencias">Sugerencias</option>
+            <option value="entidades">Consultar sobre las entidades</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Escriba su consulta</label>
+        <textarea class="form-control" name="tarea" id="exampleFormControlTextarea1" rows="3" required></textarea>
+    </div>
+    <button class="btn-success btn-lg">Enviar mi consulta</button>
+</form>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Inluirme_Proyecto.Models.Preguntas>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VerPreguntas</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="@Url.Action("VerPuestos","Puestos",new { id = ViewBag.Empresa_id })" class="nav-link">Volver</a>
+    <div class="m-4"> 
+        @foreach(var item in Model)
+            {
+        <h4>
+            1-¿@item.descripcion?
+        </h4> 
+        <h4>
+            2-¿@item.descripcion_1?
+        </h4>
+        <h4>
+            3-¿@item.descripcion_2?
+        </h4>           
+            
+            }
+    </div>
+</body>
+</html>

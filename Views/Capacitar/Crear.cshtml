@@ -1,0 +1,56 @@
+﻿@model Inluirme_Proyecto.Models.Empresas
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Crear</title>
+</head>
+<body>
+    <a href="@Url.Action("Capacitaciones","Capacitar",new { id = Model.id })" class="nav-link">Volver</a>
+    <div class="col-md-6 m-4">
+        <h1>Crear capacitacion</h1>
+        <form action="/Capacitar/Crear" method="post">
+            <input type="hidden" name="Empresa_id" value="@Model.id" />
+
+            <div class="form-group fw-bold">
+                <label>Ingrese el nombre de la capacitacion</label>
+                <input type="text" name="nombre" value="" required class="form-control" autocomplete="off"/>
+            </div>
+
+            <div class="form-group fw-bold">
+                <label>Ingrese la descripcion de la capacitacion</label>
+                <input type="text" name="descripcion" value="" required class="form-control" autocomplete="off"/>
+                <small>*Desarrollar en este campo los temas a ver en el cursado</small>
+            </div>
+
+            <div class="form-group fw-bold">
+                <label>Ingrese la fecha de comienzo</label>
+                <input type="date" name="fecha" value="" required class="form-control" autocomplete="off"/>
+            </div>
+    
+            <div class="form-group fw-bold">
+                <label>Cantidad de participantes</label>
+                <input type="text" name="cantidad" value="" required class="form-control" autocomplete="off"/>
+            </div>
+            <br />
+            <input type="submit" value="Crear capacitacion" onclick="return validar()" class="btn btn-success" />
+        </form>
+    </div>
+
+    <script>
+        function validar() {
+            if (confirm("Chequear los datos antes de guardar la capacitacion"))
+                return true
+            else
+                return false
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+﻿@model Inluirme_Proyecto.Models.Empresas
+
+@{
+    ViewBag.Title = "Registrar";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Registrar Empresa</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.nombre, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", @placeholder = "Ingrese nombre" } })
+                @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.cuit, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.cuit, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", @placeholder = "solo número, ejemplo: ##-12345678-#" } })
+                @Html.ValidationMessageFor(model => model.cuit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.provincia, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.provincia, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", @placeholder = "Ingrese provincia" } })
+                @Html.ValidationMessageFor(model => model.provincia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.ciudad, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.ciudad, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", @placeholder = "Ingrese ciudad" } })
+                @Html.ValidationMessageFor(model => model.ciudad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.domicilio, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.domicilio, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", @placeholder = "Barrio, Manzana, Lote, etc." } })
+                @Html.ValidationMessageFor(model => model.domicilio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control", autocomplete = "off",@placeholder = "Ingrese solo números" } })
+                @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.mail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.mail, new { htmlAttributes = new { @class = "form-control", autocomplete = "off", @placeholder = "Ingrese correo electronico" } })
+                @Html.ValidationMessageFor(model => model.mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.usuario, new { htmlAttributes = new { @class = "form-control", autocomplete = "off",@placeholder = "Ingresar usuario" } })
+                @Html.ValidationMessageFor(model => model.usuario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.contra, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.contra, new { htmlAttributes = new { @class = "form-control", Type = "password", @placeholder = "Ingresar Contraseña" } })
+                @Html.ValidationMessageFor(model => model.contra, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Confirmar contraseña</label>
+            <div class="col-md-10">
+                <input type="password" id="confirmar" class="form-control" value="" autocomplete="off" placeholder="Confirmar la contraseña"/>
+                <small class="text-danger" id="textoconfirmar" style="font-size: 14px;"></small>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar" onclick="return registrar()" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function registrar() {
+        var contra = document.getElementById("contra").value;
+        var confirm = document.getElementById("confirmar").value;
+
+        if (contra != confirm) {
+            document.getElementById("textoconfirmar").innerHTML = "La contraseña no coinciden";
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+</script>
+
+

@@ -1,0 +1,53 @@
+﻿@model  IEnumerable<Inluirme_Proyecto.Models.Encuestas>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>VerPuestos</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="@Url.Action("Perfil","Empresas",new { id= ViewBag.id  })" class="nav-link">Volver</a>
+    <div> 
+        <a href="@Url.Action("Crear","Puestos",new { id = ViewBag.id })" class="nav-link">Crear puesto</a>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>Nombre de la capacitacion</th>
+            <th>Descripcion de la capacitacion</th>
+            <th>Operaciones</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.nombre
+                </td>
+                <td>
+                    @item.descripcion
+                </td>
+                <td class="row">
+                    <a href="@Url.Action("VerPostulantes","Puestos",new { encuestaid = item.id,empresaid = item.Empresa_id })" class="nav-link">Ver postulantes</a>
+                    <a href="@Url.Action("VerPreguntas","Puestos",new { id = item.id,Empresa_id = item.Empresa_id })" class="nav-link">Ver Preguntas</a>
+                    <a href="@Url.Action("Eliminar","Puestos",new { id = item.id,Empresa_id = item.Empresa_id })" class="nav-link text-danger" onclick="return Eliminar()">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
+
+<script>
+    function Eliminar() {
+        if (confirm("¿Desea Eliminar la capacitacion?"))
+            return true
+        else
+            return false 
+    }
+</script>

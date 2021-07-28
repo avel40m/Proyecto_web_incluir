@@ -1,0 +1,41 @@
+﻿@model Inluirme_Proyecto.Models.Usuarios
+
+@{
+    ViewBag.Title = "Perfil";
+    Layout = null;
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<div class="container text-right">
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <a class="nav-link text-danger" href="/Inicio/Logout">Cerrar sesion</a>
+        }
+    }
+
+</div>
+
+<h2>DATOS PERSONALES</h2>
+<hr />
+
+<div class="card col-5">
+    <h5 class="card-header">@Model.apellido, @Model.nombre</h5>
+    <div class="card-body">
+        <p>D.N.I: @Model.dni</p>
+        <p>Telefono: @Model.telefono</p>
+        <p>Discapacidad: @Model.Discapacidad</p>
+        <p>Ultimo empleo: @Model.Empleo</p>
+        <p>Conocimiento: @Model.Conocimiento</p>
+        <a href="@Url.Action("Editar","Usuarios",new { id = Model.id })" class="btn btn-warning">Editar perfil</a>
+        <a href="@Url.Action("Eliminar","Usuarios", new { id = Model.id })" onclick="return eliminar()" class="btn btn-danger">Eliminar perfil</a>
+    </div>
+</div>
+
+<script>
+    function eliminar() {
+        if (confirm("¿Desea eliminar su cuenta de nuestra pagina?"))
+            return true
+        else
+            return false
+    }
+</script>

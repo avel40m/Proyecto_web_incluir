@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inluirme_Proyecto", "Inluirme_Proyecto.csproj", "{108417BC-4C11-4002-AE46-8E1B90EA047F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{108417BC-4C11-4002-AE46-8E1B90EA047F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{108417BC-4C11-4002-AE46-8E1B90EA047F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{108417BC-4C11-4002-AE46-8E1B90EA047F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{108417BC-4C11-4002-AE46-8E1B90EA047F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98D243B5-2599-4EC2-AA84-B234BB097EF9}
+	EndGlobalSection
+EndGlobal

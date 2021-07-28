@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PostularmeBecas</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<style>
+    .forms {
+        margin-left: 25%;
+        margin-top: 10%;
+        padding: 3%;
+        border: 1px black solid;
+    }
+</style>
+
+
+<body>
+    <a href="@Url.Action("VerBecas","Inicio")" class="nav-link">Volver</a>
+    <div>
+        <form action="/Inicio/VerificacionB" method="post" class="col-md-5 forms">
+            <h1>CUENTA DE USUARIO</h1>
+            <hr />
+            <input type="hidden" name="idEncuesta" value="@ViewBag.id" />
+            <div class="form-group">
+                <h5>Ingrese su usuario</h5>
+                <input type="text" name="usuario" value="" class="form-control" autofocus autocomplete="off" required />
+            </div>
+            <br />
+            <div class="form-group">
+                <h5>Ingrese su contraseña</h5>
+                <input type="password" name="clave" value="" class="form-control" autocomplete="off" required/>
+            </div>
+            <br />
+            <input type="submit" class="btn btn-success" value="Postularse" />
+        </form>
+    </div>
+</body>
+</html>

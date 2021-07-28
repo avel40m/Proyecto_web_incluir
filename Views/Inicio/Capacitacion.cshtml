@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Inluirme_Proyecto.Models.Capacitaciones>
+@{
+    ViewBag.Title = "Capacitacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{ if (!string.IsNullOrEmpty(ViewBag.message))
+    {
+        <div class="alert alert-info">@ViewBag.message</div>
+    }
+}
+
+<h2>Capacitacion</h2>
+<hr />
+
+
+@foreach (var item in Model)
+{
+    <div class="card w-75 col-md-5" style="border: 1px black solid; padding: 10px; margin: 20px; box-shadow: 5px 10px #888888">
+        <div class="card-body">
+            <h5 class="card-title"> <b>@item.nombre</b> </h5>
+            <p class="card-text">
+                @item.descripcion
+            </p>
+            <p>
+                Fecha de inicio: @Html.ValueFor(modelItem => item.fecha, "{0:dd/MM/yyyy}")
+            </p>
+            <p>
+                Participantes permitidos:@item.cantidad
+            </p>
+            <a href="@Url.Action("Anotarme","Inicio",new { id = item.id })" class="btn btn-primary">Anotarme en el curso</a>
+        </div>
+    </div>
+
+}

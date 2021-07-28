@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Inluirme_Proyecto.Models.Capacitaciones>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Capacitaciones</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="@Url.Action("Perfil","Universidades",new { id = ViewBag.id  })" class="nav-link">Volver</a>
+    <div>
+        <a href="@Url.Action("Crear","CapacitarUniversidad",new { id = ViewBag.id })" class="nav-link">Crear Capacitaciones</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion del curso</th>
+                    <th scope="col">Fecha del cursado</th>
+                    <th scope="col">Cantidad permitida</th>
+                    <th>
+                        Operaciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.nombre</td>
+                        <td>@item.descripcion</td>
+                        <td>@item.fecha</td>
+                        <td>@item.cantidad</td>
+                        <td>
+                            <a href="@Url.Action("VerUsuario","CapacitarUniversidad",new { id = item.id,Universidad_id = item.Universidad_id })">Ver personas pre-inscriptas al curso</a>
+                            <a href="@Url.Action("Editar","CapacitarUniversidad",new { id = item.id })" class="text-warning">Editar datos</a>
+                            <a href="@Url.Action("Eliminar","CapacitarUniversidad",new { id = item.id,universidad_id= item.Universidad_id })" onclick="return eliminar()" class="text-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+<script>
+    function eliminar() {
+        if (confirm("¿Desea eliminar la capacitacion?"))
+            return true
+        else
+            return false
+    }
+</script>

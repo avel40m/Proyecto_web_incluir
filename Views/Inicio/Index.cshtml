@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Index";
+
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Content/InicioEstilo.css" rel="stylesheet" />
+
+</head>
+<body>
+    @if (!string.IsNullOrEmpty(ViewBag.message))
+    {
+        <div class="alert alert-success">@ViewBag.message</div>
+    }
+
+    <!-- Empieza el header -->
+    <div class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading font-google-400 ">Bienvenido al sitio web incluir.com</h1>
+            <p class="lead text-muted">Ingresar a la web para poder participar en capacitaciones o en puesto de trabajo.</p>
+            <p>
+                <button href="#" data-toggle="modal" data-target="#myModal" class="btn-personal">Ingresar como usuario</button>
+            </p>
+        </div>
+    </div>
+    <!-- Termina el header -->
+    <!-- Empieza card registro -->
+    <div class="container" style="display:block;">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="container">
+                    <div class="card">
+                        <div class="content">
+                            <div class="front text-center">
+                                <p>Registrar Usuario</p>
+                            </div>
+                            <div class="back text-center">
+                                <a href="@Url.Action("Registrar","Usuarios")" class="nav-link acceder">Click!!!!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="content">
+                        <div class="front text-center">
+                            <p>Registrar Empresas</p>
+                        </div>
+                        <div class="back text-center">
+                            <a href="@Url.Action("Registrar","Empresas")" class="nav-link acceder">Click!!!!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="content">
+                        <div class="front text-center">
+                            <p>Registrar Universidad</p>
+                        </div>
+                        <div class="back text-center">
+                            <a href="@Url.Action("Registrar","Universidades")" class="nav-link acceder">Click!!!!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- termina card registro -->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PROYECTO_INCLUIRModelStoreContainer" CdmEntityContainer="PROYECTO_INCLUIREntities">
+    <EntitySetMapping Name="Capacitaciones">
+      <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Capacitaciones">
+        <MappingFragment StoreEntitySet="Capacitaciones">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Empresa_id" ColumnName="Empresa_id" />
+          <ScalarProperty Name="Universidad_id" ColumnName="Universidad_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresas">
+      <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Empresas">
+        <MappingFragment StoreEntitySet="Empresas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+          <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="contra" ColumnName="contra" />
+          <ScalarProperty Name="cuit" ColumnName="cuit" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Encuestas">
+      <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Encuestas">
+        <MappingFragment StoreEntitySet="Encuestas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Empresa_id" ColumnName="Empresa_id" />
+          <ScalarProperty Name="Universidad_id" ColumnName="Universidad_id" />
+          <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="clasificacion" ColumnName="clasificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Preguntas">
+      <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Preguntas">
+        <MappingFragment StoreEntitySet="Preguntas">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Encuesta_id" ColumnName="Encuesta_id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="respuesta" ColumnName="respuesta" />
+          <ScalarProperty Name="descripcion_1" ColumnName="descripcion_1" />
+          <ScalarProperty Name="respuesta_1" ColumnName="respuesta_1" />
+          <ScalarProperty Name="descripcion_2" ColumnName="descripcion_2" />
+          <ScalarProperty Name="respuesta_2" ColumnName="respuesta_2" />
+          <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="teaCapacitar">
+      <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.teaCapacitar">
+        <MappingFragment StoreEntitySet="teaCapacitar">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idCapacitacion" ColumnName="idCapacitacion" />
+          <ScalarProperty Name="idUsuarios" ColumnName="idUsuarios" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Universidades">
+      <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Universidades">
+        <MappingFragment StoreEntitySet="Universidades">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cuit" ColumnName="cuit" />
+          <ScalarProperty Name="provincia" ColumnName="provincia" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+          <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="mail" ColumnName="mail" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="contra" ColumnName="contra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Usuarios">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="contra" ColumnName="contra" />
+          <ScalarProperty Name="Discapacidad" ColumnName="Discapacidad" />
+          <ScalarProperty Name="Empleo" ColumnName="Empleo" />
+          <ScalarProperty Name="Conocimiento" ColumnName="Conocimiento" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

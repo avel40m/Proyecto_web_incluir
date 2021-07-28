@@ -1,0 +1,59 @@
+﻿@model Inluirme_Proyecto.Models.Universidades
+
+
+@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Crear</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+        <a href="@Url.Action("Perfil","Universidades",new { id = Model.id })" class="nav-link">Volver al menu</a>
+        <div class="col-md-6 m-4">
+            <h1>Crear capacitacion</h1>
+            <form action="/CapacitarUniversidad/Crear" method="post">
+                <input type="hidden" name="Universidad_id" value="@Model.id" />
+
+                <div class="form-group">
+                    <label class="fw-bold">Ingrese el nombre de la capacitacion</label>
+                    <input type="text" name="nombre" value="" required class="form-control" autocomplete="off"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="fw-bold">Ingrese la descripcion de la capacitacion</label>
+                    <input type="text" name="descripcion" value="" required class="form-control" autocomplete="off" />
+                    <small>*Desarrollar en este campo los temas a ver en el cursado</small>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="fw-bold">Ingrese la fecha de comienzo</label>
+                    <input type="date" name="fecha" value="" required class="form-control" autocomplete="off"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="fw-bold">Cantidad de participantes</label>
+                    <input type="text" name="cantidad" value="" required class="form-control" autocomplete="off"/>
+                </div>
+                <input type="submit" value="Crear capacitacion" class="btn btn-success" onclick="return validar()"/>
+            </form>
+        </div>
+
+        <script>
+            function validar() {
+                if (confirm("Chequear los datos antes de guardar la capacitacion"))
+                    return true
+                else
+                    return false
+            }
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PROYECTO_INCLUIRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Capacitaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empresa_id" Type="int" />
+          <Property Name="Universidad_id" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="varchar(max)" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="cantidad" Type="float" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="provincia" Type="varchar" MaxLength="50" />
+          <Property Name="ciudad" Type="varchar" MaxLength="50" />
+          <Property Name="domicilio" Type="varchar" MaxLength="100" />
+          <Property Name="mail" Type="varchar" MaxLength="100" />
+          <Property Name="usuario" Type="varchar" MaxLength="100" />
+          <Property Name="contra" Type="varchar" MaxLength="100" />
+          <Property Name="cuit" Type="int" />
+          <Property Name="telefono" Type="int" />
+        </EntityType>
+        <EntityType Name="Encuestas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Empresa_id" Type="int" />
+          <Property Name="Universidad_id" Type="int" />
+          <Property Name="Usuario_id" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="varchar(max)" />
+          <Property Name="fecha" Type="datetime" />
+          <Property Name="clasificacion" Type="float" />
+        </EntityType>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Encuesta_id" Type="int" />
+          <Property Name="descripcion" Type="varchar(max)" />
+          <Property Name="respuesta" Type="varchar(max)" />
+          <Property Name="descripcion_1" Type="varchar(max)" />
+          <Property Name="respuesta_1" Type="varchar(max)" />
+          <Property Name="descripcion_2" Type="varchar(max)" />
+          <Property Name="respuesta_2" Type="varchar(max)" />
+          <Property Name="Usuario_id" Type="int" />
+        </EntityType>
+        <EntityType Name="teaCapacitar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idCapacitacion" Type="int" />
+          <Property Name="idUsuarios" Type="int" />
+        </EntityType>
+        <EntityType Name="Universidades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="cuit" Type="int" />
+          <Property Name="provincia" Type="varchar" MaxLength="50" />
+          <Property Name="ciudad" Type="varchar" MaxLength="50" />
+          <Property Name="domicilio" Type="varchar" MaxLength="100" />
+          <Property Name="telefono" Type="int" />
+          <Property Name="mail" Type="varchar" MaxLength="100" />
+          <Property Name="usuario" Type="varchar" MaxLength="100" />
+          <Property Name="contra" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" />
+          <Property Name="apellido" Type="varchar" MaxLength="100" />
+          <Property Name="dni" Type="int" />
+          <Property Name="telefono" Type="int" />
+          <Property Name="usuario" Type="varchar" MaxLength="50" />
+          <Property Name="contra" Type="varchar" MaxLength="50" />
+          <Property Name="Discapacidad" Type="varchar" MaxLength="100" />
+          <Property Name="Empleo" Type="varchar" MaxLength="100" />
+          <Property Name="Conocimiento" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__Capacitac__Empre__01142BA1">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Capacitaciones" Type="Self.Capacitaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Capacitaciones">
+              <PropertyRef Name="Empresa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Capacitac__Unive__04E4BC85">
+          <End Role="Universidades" Type="Self.Universidades" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Capacitaciones" Type="Self.Capacitaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universidades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Capacitaciones">
+              <PropertyRef Name="Universidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Encuestas__Empre__05D8E0BE">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Encuestas" Type="Self.Encuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Encuestas">
+              <PropertyRef Name="Empresa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Encuestas__Unive__06CD04F7">
+          <End Role="Universidades" Type="Self.Universidades" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Encuestas" Type="Self.Encuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universidades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Encuestas">
+              <PropertyRef Name="Universidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preguntas__Encue__07C12930">
+          <End Role="Encuestas" Type="Self.Encuestas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Encuestas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="Encuesta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preguntas__Usuar__6FE99F9F">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="Usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__teaCapaci__idCap__70DDC3D8">
+          <End Role="Capacitaciones" Type="Self.Capacitaciones" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="teaCapacitar" Type="Self.teaCapacitar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Capacitaciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teaCapacitar">
+              <PropertyRef Name="idCapacitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__teaCapaci__idUsu__6EF57B66">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="teaCapacitar" Type="Self.teaCapacitar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teaCapacitar">
+              <PropertyRef Name="idUsuarios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PROYECTO_INCLUIRModelStoreContainer">
+          <EntitySet Name="Capacitaciones" EntityType="Self.Capacitaciones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Encuestas" EntityType="Self.Encuestas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Preguntas" EntityType="Self.Preguntas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="teaCapacitar" EntityType="Self.teaCapacitar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Universidades" EntityType="Self.Universidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Capacitac__Empre__01142BA1" Association="Self.FK__Capacitac__Empre__01142BA1">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Capacitaciones" EntitySet="Capacitaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Capacitac__Unive__04E4BC85" Association="Self.FK__Capacitac__Unive__04E4BC85">
+            <End Role="Universidades" EntitySet="Universidades" />
+            <End Role="Capacitaciones" EntitySet="Capacitaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Encuestas__Empre__05D8E0BE" Association="Self.FK__Encuestas__Empre__05D8E0BE">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Encuestas" EntitySet="Encuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Encuestas__Unive__06CD04F7" Association="Self.FK__Encuestas__Unive__06CD04F7">
+            <End Role="Universidades" EntitySet="Universidades" />
+            <End Role="Encuestas" EntitySet="Encuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preguntas__Encue__07C12930" Association="Self.FK__Preguntas__Encue__07C12930">
+            <End Role="Encuestas" EntitySet="Encuestas" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preguntas__Usuar__6FE99F9F" Association="Self.FK__Preguntas__Usuar__6FE99F9F">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__teaCapaci__idCap__70DDC3D8" Association="Self.FK__teaCapaci__idCap__70DDC3D8">
+            <End Role="Capacitaciones" EntitySet="Capacitaciones" />
+            <End Role="teaCapacitar" EntitySet="teaCapacitar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__teaCapaci__idUsu__6EF57B66" Association="Self.FK__teaCapaci__idUsu__6EF57B66">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="teaCapacitar" EntitySet="teaCapacitar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PROYECTO_INCLUIRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Capacitaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empresa_id" Type="Int32" />
+          <Property Name="Universidad_id" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="cantidad" Type="Double" />
+          <NavigationProperty Name="Empresas" Relationship="Self.FK__Capacitac__Empre__01142BA1" FromRole="Capacitaciones" ToRole="Empresas" />
+          <NavigationProperty Name="Universidades" Relationship="Self.FK__Capacitac__Unive__04E4BC85" FromRole="Capacitaciones" ToRole="Universidades" />
+          <NavigationProperty Name="teaCapacitar" Relationship="Self.FK__teaCapaci__idCap__70DDC3D8" FromRole="Capacitaciones" ToRole="teaCapacitar" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="domicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="contra" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cuit" Type="Int32" />
+          <Property Name="telefono" Type="Int32" />
+          <NavigationProperty Name="Capacitaciones" Relationship="Self.FK__Capacitac__Empre__01142BA1" FromRole="Empresas" ToRole="Capacitaciones" />
+          <NavigationProperty Name="Encuestas" Relationship="Self.FK__Encuestas__Empre__05D8E0BE" FromRole="Empresas" ToRole="Encuestas" />
+        </EntityType>
+        <EntityType Name="Encuestas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Empresa_id" Type="Int32" />
+          <Property Name="Universidad_id" Type="Int32" />
+          <Property Name="Usuario_id" Type="Int32" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="fecha" Type="DateTime" Precision="3" />
+          <Property Name="clasificacion" Type="Double" />
+          <NavigationProperty Name="Empresas" Relationship="Self.FK__Encuestas__Empre__05D8E0BE" FromRole="Encuestas" ToRole="Empresas" />
+          <NavigationProperty Name="Universidades" Relationship="Self.FK__Encuestas__Unive__06CD04F7" FromRole="Encuestas" ToRole="Universidades" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.FK__Preguntas__Encue__07C12930" FromRole="Encuestas" ToRole="Preguntas" />
+        </EntityType>
+        <EntityType Name="Preguntas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Encuesta_id" Type="Int32" />
+          <Property Name="descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="respuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="respuesta_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="respuesta_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario_id" Type="Int32" />
+          <NavigationProperty Name="Encuestas" Relationship="Self.FK__Preguntas__Encue__07C12930" FromRole="Preguntas" ToRole="Encuestas" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__Preguntas__Usuar__6FE99F9F" FromRole="Preguntas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="teaCapacitar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idCapacitacion" Type="Int32" />
+          <Property Name="idUsuarios" Type="Int32" />
+          <NavigationProperty Name="Capacitaciones" Relationship="Self.FK__teaCapaci__idCap__70DDC3D8" FromRole="teaCapacitar" ToRole="Capacitaciones" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK__teaCapaci__idUsu__6EF57B66" FromRole="teaCapacitar" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Universidades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cuit" Type="Int32" />
+          <Property Name="provincia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="domicilio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="telefono" Type="Int32" />
+          <Property Name="mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="contra" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Capacitaciones" Relationship="Self.FK__Capacitac__Unive__04E4BC85" FromRole="Universidades" ToRole="Capacitaciones" />
+          <NavigationProperty Name="Encuestas" Relationship="Self.FK__Encuestas__Unive__06CD04F7" FromRole="Universidades" ToRole="Encuestas" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="dni" Type="Int32" />
+          <Property Name="telefono" Type="Int32" />
+          <Property Name="usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Discapacidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Empleo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Conocimiento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Preguntas" Relationship="Self.FK__Preguntas__Usuar__6FE99F9F" FromRole="Usuarios" ToRole="Preguntas" />
+          <NavigationProperty Name="teaCapacitar" Relationship="Self.FK__teaCapaci__idUsu__6EF57B66" FromRole="Usuarios" ToRole="teaCapacitar" />
+        </EntityType>
+        <Association Name="FK__Capacitac__Empre__01142BA1">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Capacitaciones" Type="Self.Capacitaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Capacitaciones">
+              <PropertyRef Name="Empresa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Capacitac__Unive__04E4BC85">
+          <End Role="Universidades" Type="Self.Universidades" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Capacitaciones" Type="Self.Capacitaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universidades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Capacitaciones">
+              <PropertyRef Name="Universidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__teaCapaci__idCap__70DDC3D8">
+          <End Role="Capacitaciones" Type="Self.Capacitaciones" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="teaCapacitar" Type="Self.teaCapacitar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Capacitaciones">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teaCapacitar">
+              <PropertyRef Name="idCapacitacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Encuestas__Empre__05D8E0BE">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Encuestas" Type="Self.Encuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Encuestas">
+              <PropertyRef Name="Empresa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Encuestas__Unive__06CD04F7">
+          <End Role="Universidades" Type="Self.Universidades" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Encuestas" Type="Self.Encuestas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Universidades">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Encuestas">
+              <PropertyRef Name="Universidad_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preguntas__Encue__07C12930">
+          <End Role="Encuestas" Type="Self.Encuestas" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Encuestas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="Encuesta_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Preguntas__Usuar__6FE99F9F">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Preguntas" Type="Self.Preguntas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Preguntas">
+              <PropertyRef Name="Usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__teaCapaci__idUsu__6EF57B66">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="teaCapacitar" Type="Self.teaCapacitar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="teaCapacitar">
+              <PropertyRef Name="idUsuarios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PROYECTO_INCLUIREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Capacitaciones" EntityType="Self.Capacitaciones" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" />
+          <EntitySet Name="Encuestas" EntityType="Self.Encuestas" />
+          <EntitySet Name="Preguntas" EntityType="Self.Preguntas" />
+          <EntitySet Name="teaCapacitar" EntityType="Self.teaCapacitar" />
+          <EntitySet Name="Universidades" EntityType="Self.Universidades" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <AssociationSet Name="FK__Capacitac__Empre__01142BA1" Association="Self.FK__Capacitac__Empre__01142BA1">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Capacitaciones" EntitySet="Capacitaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Capacitac__Unive__04E4BC85" Association="Self.FK__Capacitac__Unive__04E4BC85">
+            <End Role="Universidades" EntitySet="Universidades" />
+            <End Role="Capacitaciones" EntitySet="Capacitaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK__teaCapaci__idCap__70DDC3D8" Association="Self.FK__teaCapaci__idCap__70DDC3D8">
+            <End Role="Capacitaciones" EntitySet="Capacitaciones" />
+            <End Role="teaCapacitar" EntitySet="teaCapacitar" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Encuestas__Empre__05D8E0BE" Association="Self.FK__Encuestas__Empre__05D8E0BE">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Encuestas" EntitySet="Encuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Encuestas__Unive__06CD04F7" Association="Self.FK__Encuestas__Unive__06CD04F7">
+            <End Role="Universidades" EntitySet="Universidades" />
+            <End Role="Encuestas" EntitySet="Encuestas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preguntas__Encue__07C12930" Association="Self.FK__Preguntas__Encue__07C12930">
+            <End Role="Encuestas" EntitySet="Encuestas" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Preguntas__Usuar__6FE99F9F" Association="Self.FK__Preguntas__Usuar__6FE99F9F">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Preguntas" EntitySet="Preguntas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__teaCapaci__idUsu__6EF57B66" Association="Self.FK__teaCapaci__idUsu__6EF57B66">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="teaCapacitar" EntitySet="teaCapacitar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PROYECTO_INCLUIRModelStoreContainer" CdmEntityContainer="PROYECTO_INCLUIREntities">
+          <EntitySetMapping Name="Capacitaciones">
+            <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Capacitaciones">
+              <MappingFragment StoreEntitySet="Capacitaciones">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Empresa_id" ColumnName="Empresa_id" />
+                <ScalarProperty Name="Universidad_id" ColumnName="Universidad_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Empresas">
+              <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="contra" ColumnName="contra" />
+                <ScalarProperty Name="cuit" ColumnName="cuit" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Encuestas">
+            <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Encuestas">
+              <MappingFragment StoreEntitySet="Encuestas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Empresa_id" ColumnName="Empresa_id" />
+                <ScalarProperty Name="Universidad_id" ColumnName="Universidad_id" />
+                <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="clasificacion" ColumnName="clasificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Preguntas">
+            <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Preguntas">
+              <MappingFragment StoreEntitySet="Preguntas">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Encuesta_id" ColumnName="Encuesta_id" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="respuesta" ColumnName="respuesta" />
+                <ScalarProperty Name="descripcion_1" ColumnName="descripcion_1" />
+                <ScalarProperty Name="respuesta_1" ColumnName="respuesta_1" />
+                <ScalarProperty Name="descripcion_2" ColumnName="descripcion_2" />
+                <ScalarProperty Name="respuesta_2" ColumnName="respuesta_2" />
+                <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="teaCapacitar">
+            <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.teaCapacitar">
+              <MappingFragment StoreEntitySet="teaCapacitar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idCapacitacion" ColumnName="idCapacitacion" />
+                <ScalarProperty Name="idUsuarios" ColumnName="idUsuarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Universidades">
+            <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Universidades">
+              <MappingFragment StoreEntitySet="Universidades">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="cuit" ColumnName="cuit" />
+                <ScalarProperty Name="provincia" ColumnName="provincia" />
+                <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="domicilio" ColumnName="domicilio" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="contra" ColumnName="contra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="PROYECTO_INCLUIRModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="dni" ColumnName="dni" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
+                <ScalarProperty Name="contra" ColumnName="contra" />
+                <ScalarProperty Name="Discapacidad" ColumnName="Discapacidad" />
+                <ScalarProperty Name="Empleo" ColumnName="Empleo" />
+                <ScalarProperty Name="Conocimiento" ColumnName="Conocimiento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
